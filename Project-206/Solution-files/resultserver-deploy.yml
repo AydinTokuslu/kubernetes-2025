@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: resultserver
+  name: resultserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resultserver
+  template:
+    metadata:
+      labels:
+        app: resultserver
+    spec:
+      containers:
+      - image: aydintokuslu/resultserver2025:1.0
+        name: resultserver
+        # env:
+        # - name: MYSQL_ROOT_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mysecret
+        #       key: MYSQL_ROOT_PASSWORD
+        # - name: MYSQL_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mysecret
+        #       key: MYSQL_PASSWORD
+        envFrom:
+        - configMapRef:
+            name: myconfigmap
+        - secretRef:
+            name: mysecret
+        # env:
+        # - name: MYSQL_PASSWORD
+        #   value: Clarusway_1
+        # - name: MYSQL_DATABASE
+        #   value: phonebook
+        # - name: MYSQL_DATABASE_HOST
+        #   value: mysql
+        # - name: MYSQL_USER
+        #   value: clarus
+        resources: {}

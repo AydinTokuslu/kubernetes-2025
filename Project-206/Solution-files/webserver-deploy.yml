@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webserver
+  name: webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+      - image: aydintokuslu/webserver2025:1.0
+        name: webserver
+        # env:
+        # - name: MYSQL_ROOT_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mysecret
+        #       key: MYSQL_ROOT_PASSWORD
+        # - name: MYSQL_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: mysecret
+        #       key: MYSQL_PASSWORD
+        envFrom:
+        - configMapRef:
+            name: myconfigmap
+        - secretRef:
+            name: mysecret
+        # env:
+        # - name: MYSQL_PASSWORD
+        #   value: Clarusway_1
+        # - name: MYSQL_DATABASE
+        #   value: phonebook
+        # - name: MYSQL_DATABASE_HOST
+        #   value: mysql
+        # - name: MYSQL_USER
+        #   value: clarus
+        resources: {}

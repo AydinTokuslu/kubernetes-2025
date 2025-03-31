@@ -48,6 +48,7 @@ spec:
         - name: mysql-pv-volume
           mountPath: /var/lib/mysql
         resources: {}
+        
       volumes:
       - name: mysql-pv-volume
         persistentVolumeClaim:

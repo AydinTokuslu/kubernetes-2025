@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: roman
+  name: roman
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: roman
+  template:
+    metadata:
+      labels:
+        app: roman
+    spec:
+      containers:
+      - image: aydintokuslu/project001:2.0
+        name: roman
+        ports:
+          - containerPort: 80
+        volumeMounts:
+          - name: roman-pv-volume
+            mountPath: "/roman-pod"
+      volumes:
+      - name: roman-pv-volume
+        persistentVolumeClaim:
+          claimName: roman-pv-claim
+
+

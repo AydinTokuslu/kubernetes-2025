@@ -1,7 +1,7 @@
 [Unit]
 Description=Gunicorn instance for ${APP_NAME}
 After=network.target mysql.service
-Requires=mysql.service
+
 
 [Service]
 User=${APP_USER}

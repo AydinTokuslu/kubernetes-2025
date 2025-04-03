@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kittens
+  name: kittens
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kittens
+  template:
+    metadata:
+      labels:
+        app: kittens
+    spec:
+      containers:
+      - image: aydintokuslu/kittens_carousel:2.0
+        name: kittens
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: kittens-pv-volume
+            mountPath: "/kittenspod"
+      volumes:
+      - name: kittens-pv-volume
+        persistentVolumeClaim:
+          claimName: kittens-pv-claim
+

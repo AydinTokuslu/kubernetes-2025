@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kittens
+  name: kittens
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kittens
+  template:
+    metadata:
+      labels:
+        app: kittens
+    spec:
+      containers:
+      - image: aydintokuslu/kittens_website:1.0
+        name: kittens
+        ports:
+        - containerPort: 80
+        resources: {}

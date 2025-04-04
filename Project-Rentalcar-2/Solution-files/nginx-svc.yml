@@ -6,10 +6,10 @@ metadata:
     app: nginx
 spec:
   #type: LoadBalancer
-  type: NodePort
+  #type: NodePort
   selector:
     app: nginx
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 30008
+      #nodePort: 30008

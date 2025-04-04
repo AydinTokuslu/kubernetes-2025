@@ -15,26 +15,24 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:5.7
+      - image: mysql:8.0.35
         name: mysql
         ports:
         - containerPort: 3306
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: R1234r
-        - name: MYSQL_DATABASE
-          value: bookstore_db
-        - name: MYSQL_USER
-          value: clarusway
         - name: MYSQL_PASSWORD
-          value: Clarusway_1
-      #   volumeMounts:
-      #   - name: mysql-pv-volume
-      #     mountPath: /var/lib/mysql
-      #   resources: {}
-        
-        
-      # volumes:
-      # - name: mysql-pv-volume
-      #   persistentVolumeClaim:
-      #     claimName: mysql-pv-claim
+          value: admin123
+        - name: MYSQL_DATABASE
+          value: araba_kiralama
+        - name: MYSQL_USER
+          value: admin
+        volumeMounts:
+        - name: mysql-pv-volume
+          mountPath: /var/lib/mysql
+        resources: {}
+      volumes:
+      - name: mysql-pv-volume
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim

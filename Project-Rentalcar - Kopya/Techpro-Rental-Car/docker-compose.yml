@@ -1,0 +1,57 @@
+
+services:
+  db:
+    image: mysql:8.0.35
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+    environment:
+      - MYSQL_ROOT_PASSWORD=R1234r
+      - MYSQL_DATABASE=araba_kiralama
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin123
+    networks:
+      - carnet
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=db
+      - DB_USER=admin
+      - DB_PASSWORD=admin123
+      - DB_NAME=araba_kiralama
+      - DOMAIN_NAME=${DOMAIN_NAME}
+    restart: always
+    networks:
+        - carnet
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_reverse_proxy
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    networks:
+      - carnet
+
+networks:
+  carnet:
+    driver: bridge
+
+volumes:
+  mysql-data:

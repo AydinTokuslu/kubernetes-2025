@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bookstore
+  name: bookstore
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookstore
+  template:
+    metadata:
+      labels:
+        app: bookstore
+    spec:
+      containers:
+      - image: aydintokuslu/bookstore:2.0
+        name: bookstore
+        env:
+        - name: MYSQL_DATABASE_HOST
+          value: mysql
+        - name: MYSQL_DATABASE
+          value: bookstore_db
+        - name: MYSQL_USER
+          value: clarusway
+        - name: MYSQL_PASSWORD
+          value: Clarusway_1
+        resources: {}
+

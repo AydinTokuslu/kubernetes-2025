@@ -1,5 +1,6 @@
 FROM python:alpine
-RUN pip install flask
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 COPY . /app
 WORKDIR /app
 EXPOSE 80

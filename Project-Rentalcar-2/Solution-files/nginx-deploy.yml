@@ -24,6 +24,15 @@ spec:
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
           readOnly: true
+        env:
+        - name: MYSQL_PASSWORD
+          value: admin123
+        - name: MYSQL_DATABASE
+          value: araba_kiralama
+        - name: MYSQL_DATABASE_HOST
+          value: mysql
+        - name: MYSQL_USER
+          value: admin
         resources: {}
       volumes:
       - name: nginx-conf

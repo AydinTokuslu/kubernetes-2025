@@ -15,7 +15,7 @@ spec:
         app: webserver
     spec:
       containers:
-      - image: aydintokuslu/rentalcar:1.0
+      - image: aydintokuslu/rentalcar:2.0
         name: webserver
         env:
         - name: MYSQL_PASSWORD

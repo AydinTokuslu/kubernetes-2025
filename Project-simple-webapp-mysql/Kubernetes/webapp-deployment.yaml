@@ -22,8 +22,6 @@ spec:
         # env:
         # - name: DB_Host
         #   value: mysql-service
-        # - name: MYSQL_ROOT_PASSWORD
-        #   value: paswrd"
         # - name: MYSQL_DATABASE
         #   value: "DB_Database"
         # - name: MYSQL_USER

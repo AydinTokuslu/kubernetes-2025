@@ -1,0 +1,2 @@
+webserver_image: aydintokuslu/proje_webserver
+resultserver_image: aydintokuslu/proje_resultserver

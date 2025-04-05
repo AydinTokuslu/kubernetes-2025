@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: webapp
+        image: aydintokuslu/counter-app:2.0
+        ports:
+        - containerPort: 3000
+        # env:
+        #   - name: "host"
+        #     valueFrom:
+        #       configMapKeyRef:
+        #         name: redis-configmap
+        #         key: database_url
+        env:
+            - name: "host"
+              value: "redis-service"
+        resources:
+            limits:
+              memory: 500Mi
+              cpu: 100m
+            requests:
+              memory: 250Mi
+              cpu: 80m
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  selector:
+    app: myapp
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30015
+  type: NodePort

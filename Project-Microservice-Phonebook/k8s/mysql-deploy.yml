@@ -20,20 +20,20 @@ spec:
         ports:
         - containerPort: 3306
         env:
-          - name: MYSQL_ROOT_PASSWORD
-            value: R1234r
-          - name: MYSQL_DATABASE
-            value: phonebook
-          - name: MYSQL_USER
-            value: clarus
-          - name: MYSQL_PASSWORD
-            value: Clarusway_1
-        volumeMounts:
-          - name: pv-volume
-            mountPath: /var/lib/mysql
-        resources: {}
-      volumes:
-        - name: pv-volume
-          persistentVolumeClaim:
-            claimName: mysql-pv-claim
+        - name: MYSQL_ROOT_PASSWORD
+          value: R1234r
+        - name: MYSQL_PASSWORD
+          value: Clarusway_1  
+        - name: MYSQL_DATABASE
+          value: phonebook
+        - name: MYSQL_USER
+          value: clarus
+        resources: {}  
+      #   volumeMounts:
+      #     - name: pv-volume
+      #       mountPath: /var/lib/mysql
+      # volumes:
+      #   - name: pv-volume
+      #     persistentVolumeClaim:
+      #       claimName: mysql-pv-claim
 

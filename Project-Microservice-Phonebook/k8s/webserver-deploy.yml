@@ -19,13 +19,18 @@ spec:
         name: webserver
         ports:
         - containerPort: 80
-        env:
-        - name: MYSQL_DATABASE_HOST 
-          value: mysql-svc
-        - name: MYSQL_DATABASE
-          value: phonebook
-        - name: MYSQL_USER
-          value: clarus
-        - name: MYSQL_PASSWORD
-          value: Clarusway_1
+        envFrom:
+        - configMapRef:
+            name: myconfigmap
+        - secretRef:
+            name: mysecret
+        # env:
+        # - name: MYSQL_DATABASE_HOST 
+        #   value: mysql-svc
+        # - name: MYSQL_DATABASE
+        #   value: phonebook
+        # - name: MYSQL_USER
+        #   value: clarus
+        # - name: MYSQL_PASSWORD
+        #   value: Clarusway_1
         resources: {}

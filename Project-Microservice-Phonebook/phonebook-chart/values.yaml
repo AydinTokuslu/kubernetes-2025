@@ -1,2 +1,2 @@
-webserver_image: aydintokuslu/proje_webserver
-resultserver_image: aydintokuslu/proje_resultserver
+webserver_image: aydintokuslu/proje_webserver:3.0
+resultserver_image: aydintokuslu/proje_resultserver:3.0

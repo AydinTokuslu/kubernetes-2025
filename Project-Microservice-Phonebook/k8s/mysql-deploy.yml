@@ -23,16 +23,17 @@ spec:
           - name: MYSQL_ROOT_PASSWORD
             value: R1234r
           - name: MYSQL_DATABASE
-            value: bookstore_db
+            value: phonebook
           - name: MYSQL_USER
-            value: clarusway
+            value: clarus
           - name: MYSQL_PASSWORD
             value: Clarusway_1
-      #   volumeMounts:
-      #     - name: mysql-pv-volume
-      #       mountPath: /var/lib/mysql
-      #   resources: {}
-      # volumes:
-      #   - name: mysql-pv-volume
-      #     persistentVolumeClaim:
-      #       claimName: mysql-pv-claim
+        volumeMounts:
+          - name: pv-volume
+            mountPath: /var/lib/mysql
+        resources: {}
+      volumes:
+        - name: pv-volume
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
+

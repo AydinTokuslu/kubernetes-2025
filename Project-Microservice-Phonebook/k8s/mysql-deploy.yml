@@ -19,15 +19,20 @@ spec:
         name: mysql
         ports:
         - containerPort: 3306
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: R1234r
-        - name: MYSQL_PASSWORD
-          value: Clarusway_1  
-        - name: MYSQL_DATABASE
-          value: phonebook
-        - name: MYSQL_USER
-          value: clarus
+        envFrom:
+        - configMapRef:
+            name: myconfigmap
+        - secretRef:
+            name: mysecret
+        # env:
+        # - name: MYSQL_ROOT_PASSWORD
+        #   value: R1234r
+        # - name: MYSQL_PASSWORD
+        #   value: Clarusway_1  
+        # - name: MYSQL_DATABASE
+        #   value: phonebook
+        # - name: MYSQL_USER
+        #   value: clarus
         resources: {}  
       #   volumeMounts:
       #     - name: pv-volume

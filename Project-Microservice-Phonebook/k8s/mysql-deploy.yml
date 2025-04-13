@@ -34,7 +34,6 @@ spec:
         # - name: MYSQL_USER
         #   value: clarus
         resources: {}  
-        
       #   volumeMounts:
       #     - name: pv-volume
       #       mountPath: /var/lib/mysql

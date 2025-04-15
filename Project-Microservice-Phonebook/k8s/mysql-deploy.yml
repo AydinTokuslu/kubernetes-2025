@@ -33,8 +33,7 @@ spec:
         #   value: phonebook
         # - name: MYSQL_USER
         #   value: clarus
-        resources: {}  
-        
+        resources: {}
       #   volumeMounts:
       #     - name: pv-volume
       #       mountPath: /var/lib/mysql

@@ -15,8 +15,13 @@ spec:
         app: webserver
     spec:
       containers:
-      - image: aydintokuslu/rentalcar:2.0
+      - image: aydintokuslu/rentalcar:3.0
         name: webserver
+        ports:
+        - containerPort: 8000
+        # volumeMounts:
+        # - name: nginx-conf
+        #   mountPath: /etc/nginx/nginx.conf
         env:
         - name: MYSQL_PASSWORD
           value: admin123
@@ -27,3 +32,4 @@ spec:
         - name: MYSQL_USER
           value: admin
         resources: {}
+

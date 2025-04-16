@@ -39,8 +39,8 @@ def allowed_file(filename):
 
 # MySQL bağlantı bilgileri
 DB_USER = os.getenv('DB_USER', 'admin')
-DB_PASSWORD = os.getenv('DB_PASSWORD', '')
-DB_HOST = os.getenv('DB_HOST', 'localhost')
+DB_PASSWORD = os.getenv('DB_PASSWORD', 'admin123')
+DB_HOST = os.getenv('DB_HOST', 'mysql')
 DB_NAME = os.getenv('DB_NAME', 'araba_kiralama')
 
 def validate_dates(baslangic, bitis):

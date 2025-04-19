@@ -37,7 +37,6 @@ spec:
         # - name: MYSQL_USER
         #   value: admin
         resources: {}
-        
       volumes:
       - name: nginx-conf
         configMap:

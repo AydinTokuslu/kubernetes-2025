@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webserver
+  name: webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+      - image: aydintokuslu/rentalcar:3.0
+        name: webserver
+        ports:
+        - containerPort: 8000
+        # volumeMounts:
+        # - name: nginx-conf
+        #   mountPath: /etc/nginx/nginx.conf
+        env:
+        - name: MYSQL_PASSWORD
+          value: admin123
+        - name: MYSQL_DATABASE
+          value: araba_kiralama
+        - name: MYSQL_DATABASE_HOST
+          value: mysql
+        - name: MYSQL_USER
+          value: admin
+        resources: {}
+

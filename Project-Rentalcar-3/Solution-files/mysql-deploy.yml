@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mysql
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:8.0.35
+        name: mysql
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: R1234r
+        - name: MYSQL_PASSWORD
+          value: admin123
+        - name: MYSQL_DATABASE
+          value: araba_kiralama
+        - name: MYSQL_USER
+          value: admin
+        # volumeMounts:
+        # - name: mysql-pv-volume
+        #   mountPath: /var/lib/mysql
+        resources: {}
+      # volumes:
+      # - name: mysql-pv-volume
+      #   persistentVolumeClaim:
+      #     claimName: mysql-pv-claim

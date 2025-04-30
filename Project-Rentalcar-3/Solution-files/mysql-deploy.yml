@@ -28,11 +28,11 @@ spec:
           value: araba_kiralama
         - name: MYSQL_USER
           value: admin
-        # volumeMounts:
-        # - name: mysql-pv-volume
-        #   mountPath: /var/lib/mysql
+        volumeMounts:
+        - name: mysql-pv-volume
+          mountPath: /var/lib/mysql
         resources: {}
-      # volumes:
-      # - name: mysql-pv-volume
-      #   persistentVolumeClaim:
-      #     claimName: mysql-pv-claim
+      volumes:
+      - name: mysql-pv-volume
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim

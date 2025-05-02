@@ -1,0 +1,6 @@
+dnsName: rental.devopsaydintokuslu.de
+appService:
+  nodePort: 30005
+ingressService:
+  nodePort: 30006
+appImage: "aydintokuslu/rentalcar:3.0"

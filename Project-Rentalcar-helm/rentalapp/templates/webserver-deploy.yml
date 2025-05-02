@@ -15,7 +15,7 @@ spec:
         app: webserver
     spec:
       containers:
-      - image: aydintokuslu/rentalcar:3.0
+      - image: {{ .Values.appImage }}
         name: webserver
         imagePullPolicy: Always
         ports:

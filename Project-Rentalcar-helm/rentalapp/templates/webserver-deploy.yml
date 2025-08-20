@@ -33,7 +33,6 @@ spec:
           
           
           
-          
         resources:
             limits:
               cpu: 100m

@@ -31,7 +31,6 @@ spec:
           value: admin
           
 
-
         resources:
             limits:
               cpu: 100m

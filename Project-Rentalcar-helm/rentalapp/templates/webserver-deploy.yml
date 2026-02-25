@@ -30,7 +30,6 @@ spec:
         - name: MYSQL_USER
           value: admin
         resources:
-
             limits:
               cpu: 100m
             requests:
